@@ -14,6 +14,7 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 from pathlib import Path
+import dj_database_url
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
@@ -98,14 +99,7 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # }
 
 DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'artikel_blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost', 
-        'PORT': '3306'
-    }
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
 # Password validation
