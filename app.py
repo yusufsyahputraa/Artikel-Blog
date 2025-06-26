@@ -1,1 +1,1 @@
-from myproject.wsgi import app as handler
+from myproject.wsgi import application as app
