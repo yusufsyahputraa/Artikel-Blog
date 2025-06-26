@@ -99,8 +99,10 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+    'default': dj_database_url.parse(
+        "postgresql://postgres:CGLhffLQUnvdbYedeoAECtxzTgPKqfht@tramway.proxy.rlwy.net:17663/railway",
+        conn_max_age=600
+    )
 }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
