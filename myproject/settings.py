@@ -99,7 +99,11 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.config(
+        default='postgresql://username:password@host:port/dbname',
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 # Password validation
