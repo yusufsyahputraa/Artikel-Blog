@@ -14,9 +14,7 @@ from myproject.authentication import login, logout, registrasi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda request: redirect('artikel', permanent=False)),
     path('', include('artikel.urls')),
-    path('', welcome, name='home'),
     path('kontak/', kontak, name='kontak'),
     path('about/', about, name='about'),
     path('artikel/', artikel_view, name='artikel'),
