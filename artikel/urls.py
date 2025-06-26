@@ -15,7 +15,6 @@ from artikel.views import (
 
 )
 urlpatterns = [
-    path('', welcome, name='home'),
     path('kategori/list', admin_kategori_list, name="admin_kategori_list"),
     path('kategori/tambah', admin_kategori_tambah, name="admin_kategori_tambah"),
     path('kategori/update/<int:id_kategori>', admin_kategori_update, name="admin_kategori_update"),
