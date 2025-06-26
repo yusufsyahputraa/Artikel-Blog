@@ -1,6 +1,8 @@
 from django import forms
 from django_ckeditor_5.widgets import CKEditor5Widget
 from artikel.models import Kategori, ArtikelBlog
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 class KategoriForms(forms.ModelForm):
     class Meta:
@@ -74,23 +76,17 @@ class ArtikelForms(forms.ModelForm):
         model = ArtikelBlog
         fields = ('kategori','judul','konten','gambar','status')
         widgets = {
-            "kategori": forms.Select(
+            'judul': forms.TextInput(attrs={'class': 'form-control'}),
+            'konten': CKEditor5Widget(
+                config_name='extends',
                 attrs={
-                    'class': 'form-control',
-                    'required': 'True',
-                }),
-
-            "judul": forms.TextInput(
-                attrs={
-                    'class': 'form-control',
-                    'required': 'True',
-                }),
-            
-            "konten": CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"}, 
-                config_name="extends"
-                ),
-            
+                    'class': 'django_ckeditor_5',
+                    'required': False,     # <<< ini WAJIB!
+                }
+            ),
+            'kategori': forms.Select(attrs={'class': 'form-control'}),
+            'gambar': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
             # "gambar": forms.ClearableFileInput(
             #     attrs={
             #         'class': 'form-control',
@@ -103,4 +99,12 @@ class ArtikelForms(forms.ModelForm):
             #         'class': 'form-control',
             #         'required': 'True',
             #     }),
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'groups']
+        widgets = {
+            'groups': forms.CheckboxSelectMultiple,
         }

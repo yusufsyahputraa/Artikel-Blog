@@ -11,7 +11,7 @@
             <img src="{{ artikel.gambar.url }}" alt="" style="width: 100%;">
             <h3 class="title mb-4">{{ artikel.judul }}</h3>
             <p class="text-dark">
-               {{ artikel.konten }}
+              {{ artikel.konten|striptags|cut:" "|cut:"&nbsp;" }}
             </p>
           </div>
         </div>

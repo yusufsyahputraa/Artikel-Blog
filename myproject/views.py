@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from artikel.models import Kategori, ArtikelBlog
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/auth-login')
 def artikel_view(request):
     template_name = "landingpage/artikel.html"
+    next_url = request.META.get('HTTP_REFERER')
     kategori = Kategori.objects.all()
     artikel = ArtikelBlog.objects.all()
     print(request.user)

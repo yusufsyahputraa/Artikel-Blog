@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: myproject
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn myproject.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://postgres:xxxxx@xxx.proxy.rlwy.net:xxxxx/railway

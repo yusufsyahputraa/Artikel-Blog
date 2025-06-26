@@ -9,6 +9,10 @@ from artikel.views import (
     admin_artikel_tambah,
     admin_artikel_update,
     admin_artikel_delete,
+
+    admin_management_user_list,
+    admin_management_user_edit,
+
 )
 urlpatterns = [
     path('kategori/list', admin_kategori_list, name="admin_kategori_list"),
@@ -20,6 +24,10 @@ urlpatterns = [
     path('artikel/tambah', admin_artikel_tambah, name="admin_artikel_tambah"),
     path('artikel/update/<int:id_artikel>', admin_artikel_update, name="admin_artikel_update"),
     path('artikel/delete/<int:id_artikel>', admin_artikel_delete, name="admin_artikel_delete"),
+
+    path('management-user/list', admin_management_user_list, name="admin_management_user_list"),
+    path('management-user/edit/<int:user_id>/', admin_management_user_edit, name="admin_management_user_edit"),
+
 ]
 
- 
+

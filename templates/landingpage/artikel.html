@@ -13,20 +13,20 @@
             <div class="col-md-4">
               <div class="card-image position-relative border-radius-lg">
                 <div class="blur-shadow-image">
-                  <img class="img border-radius-lg" src="{{ a.gambar.url }}" alt="{{ a.judul }}" loading="lazy">
+                  <img class="img border-radius-lg rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" src="{{ a.gambar.url }}" alt="{{ a.judul }}" loading="lazy">
                 </div>
               </div>
             </div>
             <div class="col-md-8 my-auto">
               <h4><a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a></h4>
-              <p>{{ a.konten|truncatechars:200 }}</p>
+              <p>{{ a.konten|striptags|cut:" "|cut:"&nbsp;"|truncatechars:200 }}</p>
               <div class="author d-flex align-items-center mt-2">
                 <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="author" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
                 <p class="my-auto">{{ a.author }}</p>
               </div>
             </div>
           </div>
-        </div>
+        </div> 
         {% endfor %}
       {% else %}
         <p>Tidak ada artikel tersedia.</p>
@@ -49,41 +49,35 @@
         {% endfor %}
 
         <!-- Top Berita -->
-        <h4 class="mt-5 mb-3">Top Berita</h4>
-
-        <div class="card card-plain card-blog mb-4">
+        <h4 class="mt-5">Top berita</h4>
+        {%for a in artikel%}
+        <div class="card card-plain card-blog mt-4">
           <div class="row">
-            <div class="col-4">
-              <img class="img-fluid border-radius-lg" src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=1950&q=80" alt="Top 1" loading="lazy">
+            <div class="col-lg-4 col-md-4">
+              <div class="card-image position-relative border-radius-lg">
+                <div class="blur-shadow-image">
+                  <img class="img border-radius-lg rounded-circle" style="width: 80px; height: 80px; object-fit: cover;" src="{{ a.gambar.url }}" alt="curved11" loading="lazy">
+                </div>
+              </div>
             </div>
-            <div class="col-8 d-flex align-items-center">
-              <h6 class="mb-0"><a href="javascript:;" class="text-dark">MateLabs mixes machine learning</a></h6>
+            <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
+              <h5>
+                <a href="" class="text-dark font-weight-normal">{{a.judul|truncatechars:50}}</a>
+              </h5>
             </div>
           </div>
-        </div>
-
-        <div class="card card-plain card-blog mb-4">
-          <div class="row">
-            <div class="col-4">
-              <img class="img-fluid border-radius-lg" src="https://images.unsplash.com/photo-1599639932525-213272ff954b?auto=format&fit=crop&w=1879&q=80" alt="Top 2" loading="lazy">
-            </div>
-            <div class="col-8 d-flex align-items-center">
-              <h6 class="mb-0"><a href="javascript:;" class="text-dark">Mixes machine learning</a></h6>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-plain card-blog mb-4">
-          <div class="row">
-            <div class="col-4">
-              <img class="img-fluid border-radius-lg" src="https://images.unsplash.com/photo-1622480914645-8fa9b36178a5?auto=format&fit=crop&w=1950&q=80" alt="Top 3" loading="lazy">
-            </div>
-            <div class="col-8 d-flex align-items-center">
-              <h6 class="mb-0"><a href="javascript:;" class="text-dark">MateLabs mixes machine learning</a></h6>
-            </div>
-          </div>
-        </div>
-
+        {% endfor %}
+      
+        <div id="disqus_thread"></div>
+        <script>
+            (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://my-blogging.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
     </div>
   </div>

@@ -14,6 +14,7 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 from pathlib import Path
+# import dj_database_url
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
@@ -37,7 +38,7 @@ SECRET_KEY = 'django-insecure-hf-4#6a2rriakrid%b6wkm(h!azu-s$c-d9sel25r@ka78p0u-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.onrender.com']
 
 
 # Application definition
@@ -96,14 +97,25 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default':{
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'artikel_blog',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost', 
+#         'PORT': '3306'
+#     }
+# }
+
 DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'artikel_blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost', 
-        'PORT': '3306'
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'iqwaIKezQdOXZnCSJqHpmVvkOdNZpMhP',
+        'HOST': 'nozomi.proxy.rlwy.net',
+        'PORT': '48630',
     }
 }
 
@@ -141,6 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -184,7 +197,7 @@ CKEDITOR_5_CONFIGS = {
         ],
     },
     "extends": {
-        "languange": "en",
+        "language": "en",
         "blockToolbar": [
             "paragraph", "heading1", "heading2", "heading3", "|",
             "bulletedList", "numberedList", "|", "blockQuote"
@@ -250,7 +263,7 @@ CKEDITOR_5_CONFIGS = {
                 }
             ]
         },
-        "List": {
+        "list": {
             "properties": {
                 "styles": True,
                 "startIndex": True,

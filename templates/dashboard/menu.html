@@ -15,7 +15,7 @@
             <img src="{% static 'dashboard/assets/img/team-3.jpg' %}" class="avatar">
             <span class="nav-link-text ms-2 ps-1">{{ user }}</span>
           </a>
-          <div class="collapse" id="ProfileNav" style="">
+          <div class="collapse" id="ProfileNav">
             <ul class="nav ">
               <li class="nav-item">
                 <a class="nav-link text-white " href="{% url 'logout' %}">
@@ -64,7 +64,7 @@
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="https://github.com/creativetimofficial/ct-material-dashboard-pro/blob/master/CHANGELOG.md" target="_blank">
+            <a class="nav-link" href="{% url 'admin_management_user_list' %}">
               <i class="material-icons-round ms-2">face</i>
               <span class="nav-link-text ms-2 ps-1">Users</span>
             </a>

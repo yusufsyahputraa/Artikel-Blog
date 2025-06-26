@@ -14,6 +14,8 @@ from myproject.authentication import login, logout, registrasi
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', lambda request: redirect('artikel', permanent=False)),
+    path('', include('artikel.urls')),
     path('', welcome, name='home'),
     path('kontak/', kontak, name='kontak'),
     path('about/', about, name='about'),
@@ -25,18 +27,18 @@ urlpatterns = [
 
     path('dashboard/', include("artikel.urls")),
 
-    ######################## authentication #########################
-    path('auth-login', login, name="login"), 
-    path('auth-logout', logout, name="logout"), 
-    path('auth-registrasi', registrasi, name="registrasi"), 
+######################## authentication #########################
+    path('auth-login/', login, name="login"), 
+    path('auth-logout/', logout, name="logout"), 
+    path('auth-registrasi/', registrasi, name="registrasi"), 
 ]
 
-####################### Untuk Media ######################
+###################### Untuk Media ######################
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += [
-    path("ckeditor5/", include('django_ckeditor_5.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [
+        path("ckeditor5/", include('django_ckeditor_5.urls'))
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
