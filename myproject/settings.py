@@ -11,13 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
-# import pymysql
-# pymysql.install_as_MySQLdb()
+import pymysql
+pymysql.install_as_MySQLdb()
 from pathlib import Path
-import dj_database_url
-from dotenv import load_dotenv
-load_dotenv()
-import dj_database_url
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
@@ -36,8 +32,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG", "False") == "True"
+SECRET_KEY = 'django-insecure-hf-4#6a2rriakrid%b6wkm(h!azu-s$c-d9sel25r@ka78p0u-'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -102,15 +98,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
+    'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': 'artikel_blog',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost', 
+        'PORT': '3306'
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
