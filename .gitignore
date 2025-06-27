@@ -1,7 +1,35 @@
+# Python bytecode
 *.pyc
 __pycache__/
+
+# SQLite database (jika ada)
 db.sqlite3
-/staticfiles/
-/env/
-/venv/
-/env/
+
+# Virtual environments
+env/
+venv/
+ENV/
+
+# Static files (jika kamu TIDAK pakai collectstatic)
+staticfiles/
+staticfiles_build/
+
+# Environment & secrets
+.env
+*.env
+secrets.json
+
+# Vercel local files
+.vercel/
+
+# VS Code
+.vscode/
+
+# Logs, caches, backups
+*.log
+*.bak
+*.swp
+
+# Django migration cache
+**/migrations/__pycache__/
+**/migrations/*.pyc
