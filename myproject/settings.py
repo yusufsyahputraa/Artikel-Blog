@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 # import pymysql
-# pymysql.install_as_MySQLdb()
+# pymysql.install_as_MySQLd()
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
