@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
-import pymysql
-pymysql.install_as_MySQLdb()
+# import pymysql
+# pymysql.install_as_MySQLdb()
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 
 from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
@@ -97,16 +97,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'artikel_blog',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost', 
-        'PORT': '3306'
-    }
-}
+# DATABASES = {
+#     'default':{
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'artikel_blog',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost', 
+#         'PORT': '3306'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
