@@ -1,1 +1,1 @@
-from mysite.wsgi import application as app
+from myproject.wsgi import application as app
